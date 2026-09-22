@@ -1,7 +1,9 @@
 function createGame() {
-  let board = ["", "", "",
+  let board = [
     "", "", "",
-    "", "", ""];
+    "", "", "",
+    "", "", ""
+  ];
   let winnningCombination = [
     [0, 1, 2],
     [3, 4, 5],
@@ -12,7 +14,7 @@ function createGame() {
     [0, 4, 8],
     [2, 4, 6]
   ]
-  let winner;
+  let winner = "";
   let currPlayer = "X";
   let gameOver = false;
   function playMove(index) {
@@ -25,7 +27,10 @@ function createGame() {
       winner = currPlayer;
       return;
     }
-
+    if(!board.includes("")){
+      gameOver = true;
+      return;
+    }
     currPlayer = currPlayer === "X" ? "O" : "X";
   }
   function checkWinner() {
