@@ -34,7 +34,12 @@ body {
     background: #374151;
     transform: scale(1.03);
 }
-
+.cell.winner {
+    background-color: #90ee90;
+    border-color: #228b22;
+    transform: scale(1.05);
+    transition: 0.2s ease;
+}
 .turn{
   font-size: 2em;
   font-weight: bold;

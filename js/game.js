@@ -14,6 +14,7 @@ function createGame() {
     [0, 4, 8],
     [2, 4, 6]
   ]
+  let winningCells = [];
   let winner = "";
   let currPlayer = "X";
   let gameOver = false;
@@ -23,6 +24,7 @@ function createGame() {
     }
     board[index] = currPlayer;
     if (checkWinner()) {
+      winningCells = checkWinner();
       gameOver = true;
       winner = currPlayer;
       return;
@@ -34,7 +36,7 @@ function createGame() {
     currPlayer = currPlayer === "X" ? "O" : "X";
   }
   function checkWinner() {
-    return winnningCombination.some(([a, b, c]) =>
+    return winnningCombination.find(([a, b, c]) =>
       board[a] === currPlayer &&
       board[b] === currPlayer &&
       board[c] === currPlayer
@@ -81,7 +83,10 @@ function createGame() {
     currPlayer = "X";
     winner = "";
   }
-  return { playMove, getBoard, reset, getPlayer, getGameState };
+  function getWinningCells() {
+    return winningCells;
+}
+  return { playMove, getBoard, reset, getPlayer, getGameState,  getWinningCells};
 
 }
 

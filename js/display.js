@@ -24,12 +24,28 @@ function displayGame() {
         else if (state.draw) {
             turn.textContent = "Game Draw!! Nobody Wins :(";
         }
+        
     }
 
+    function renderReset(board){
+        render(board);
+        showCurrentPlayer("X")
+        cells.forEach(cell => {
+        cell.classList.remove("winner");
+    });
+    }
+
+    function highlightWinner(winningCells){
+        winningCells.forEach(index =>{
+            cells[index].classList.add("winner")
+        })
+    }
     return {
         render,
         showCurrentPlayer,
-        showGameState
+        showGameState,
+        renderReset,
+        highlightWinner
     };
 }
 

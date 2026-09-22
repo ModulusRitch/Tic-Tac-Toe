@@ -14,6 +14,7 @@ document.querySelectorAll(".cell").forEach((cell, index) => {
 
         if (state.ended) {
             display.showGameState(state);
+            display.highlightWinner(game.getWinningCells());
         }
         else {
             display.showCurrentPlayer(game.getPlayer());
@@ -23,7 +24,5 @@ document.querySelectorAll(".cell").forEach((cell, index) => {
 
 document.querySelector(".reset").addEventListener("click", () => {
     game.reset();
-
-    display.render(game.getBoard());
-    display.showCurrentPlayer(game.getPlayer());
+    display.renderReset(game.getBoard())
 });
