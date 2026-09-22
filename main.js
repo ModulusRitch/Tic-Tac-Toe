@@ -5,24 +5,25 @@ const game = createGame();
 const display = displayGame();
 
 document.querySelectorAll(".cell").forEach((cell, index) => {
-  cell.addEventListener("click", () => {
+    cell.addEventListener("click", () => {
+        game.playMove(index);
 
-    game.playMove(index);
-    display.render(game.getBoard());
-    display.showCurrentPlayer(game.getPlayer());
-    const state = game.getGameState();
-    if (state.ended) {
-      display.showGameState(state);
-    }
-    else {
-      display.showCurrentPlayer(game.getPlayer());
-    }
-  });
+        display.render(game.getBoard());
+
+        const state = game.getGameState();
+
+        if (state.ended) {
+            display.showGameState(state);
+        }
+        else {
+            display.showCurrentPlayer(game.getPlayer());
+        }
+    });
 });
 
 document.querySelector(".reset").addEventListener("click", () => {
-  game.reset();
-  display.render(game.getBoard());
-  display.showCurrentPlayer(game.getPlayer());
-});
+    game.reset();
 
+    display.render(game.getBoard());
+    display.showCurrentPlayer(game.getPlayer());
+});

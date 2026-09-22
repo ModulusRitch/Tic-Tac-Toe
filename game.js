@@ -39,15 +39,7 @@ function createGame() {
   function getBoard() {
     return [...board];
   }
-  function reset() {
-    board = [
-      "", "", "",
-      "", "", "",
-      "", "", ""
-    ];
-    gameOver = false;
-    currPlayer = "X";
-  }
+
   function getPlayer() {
     return currPlayer;
   }
@@ -74,6 +66,16 @@ function createGame() {
             draw: false
         };
     }
+      function reset() {
+    board = [
+      "", "", "",
+      "", "", "",
+      "", "", ""
+    ];
+    gameOver = false;
+    currPlayer = "X";
+    winner = "";
+  }
   return { playMove, getBoard, reset, getPlayer, getGameState };
 
 }

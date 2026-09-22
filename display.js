@@ -1,29 +1,36 @@
 function displayGame() {
-  const cells = document.querySelectorAll(".cell");
-  const turn = document.querySelector("#turn");
-  function render(board) {
-    cells.forEach((cell, index) => {
-      cell.textContent = board[index];
-    });
+    const cells = document.querySelectorAll(".cell");
+    const turn = document.querySelector(".turn");
 
-  }
-  function showCurrentPlayer(player) {
-    turn.textContent = `${player}'s Turn`;
-  }
-
-  function showGameState(state) {
-    if (!state.ended) {
-      showCurrentPlayer(state.currentPlayer);
-      return;
+    function render(board) {
+        cells.forEach((cell, index) => {
+            cell.textContent = board[index];
+        });
     }
 
-    if (state.winner) {
-      turn.textContent = `Game Over!! ${state.winner} Won`;
+    function showCurrentPlayer(player) {
+        turn.textContent = `${player}'s Turn`;
     }
-    else if (state.draw) {
-      turn.textContent = "Game Draw!! Nobody Wins :(";
+
+    function showGameState(state) {
+        if (!state.ended) {
+            showCurrentPlayer(state.currentPlayer);
+            return;
+        }
+
+        if (state.winner) {
+            turn.textContent = `Game Over!! ${state.winner} Won`;
+        }
+        else if (state.draw) {
+            turn.textContent = "Game Draw!! Nobody Wins :(";
+        }
     }
-  }
-  return { render, showCurrentPlayer, showGameState };
+
+    return {
+        render,
+        showCurrentPlayer,
+        showGameState
+    };
 }
+
 export { displayGame };
